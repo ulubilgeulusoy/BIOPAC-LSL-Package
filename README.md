@@ -42,10 +42,9 @@ Notes for this script:
    python Biopac_ECG_RSP_EDA_LSL.py
    ```
 2) The script prints the enabled channels (in the order AcqKnowledge delivers them). Provide a mapping that states which enabled channel index corresponds to each signal:
-   - Examples: `ecg=0`, `rsp=0 ecg=1`, `ecg=0 rsp=1 eda=2`
-   - You can stream any subset; the LSL stream order is always ECG, then RSP, then EDA for whatever you include.
+   - Examples: If you are only using one sensor (`ecg=0`,`rsp=0`,`eda=0`). If you are using multiple (`rsp=0 ecg=1`, `ecg=0 rsp=1 eda=2`); make sure that this mapping matches the order in the Acqknowledge software.
 3) The script creates an LSL stream named like `Biopac ECG-RSP-EDA` with the specified channels at the configured sample rate (`SRATE` near the top of the file; defaults to 500 Hz).
-4) Toggle acquisition when prompted, then press `Y` to start streaming. Use LabRecorder (or another LSL client) to record the stream.
+4) Press `Y` toggle acquisition when prompted, then press `Y` to start streaming. Use LabRecorder (or another LSL client) to record the stream.
 5) Press `Ctrl+C` to stop; the script stops the data server and toggles acquisition off if it was turned on.
 
 Notes for this script:
