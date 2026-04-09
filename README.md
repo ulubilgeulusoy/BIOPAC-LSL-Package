@@ -7,7 +7,8 @@ Python helpers to pull physiological data from Biopac AcqKnowledge (NDT) and pub
 ## Requirements
 - Python 3.8+
 - Biopac AcqKnowledge with the NDT server enabled
-- `biopacndt.py` (included in this repo; keep it in the same folder as the scripts)
+- A BIOPAC Network Data Transfer (NDT) license: https://www.biopac.com/product/network-data-transfer-licenses/
+- `biopacndt.py` from your licensed BIOPAC NDT installation/package; this file is not included in this repo
 - `pylsl` (install via `pip install pylsl`)
 - LabRecorder or another LSL receiver to capture the stream
 
@@ -16,9 +17,25 @@ Python helpers to pull physiological data from Biopac AcqKnowledge (NDT) and pub
    ```
    pip install pylsl
    ```
-2) Keep `biopacndt.py` alongside the scripts so it can be imported.
-3) Start AcqKnowledge, enable the channels you want, and ensure the NDT server is available.
-4) (Optional) Verify firewall settings allow localhost communication for NDT/LSL.
+2) Obtain a BIOPAC NDT license and the accompanying `biopacndt.py` file from BIOPAC:
+   https://www.biopac.com/product/network-data-transfer-licenses/
+3) Keep `biopacndt.py` alongside the scripts so it can be imported. This repository does not ship that file.
+4) Start AcqKnowledge, enable the channels you want, and ensure the NDT server is available.
+5) (Optional) Verify firewall settings allow localhost communication for NDT/LSL.
+
+## NDT License Check
+If you are unsure whether your AcqKnowledge installation has a BIOPAC Network Data Transfer (NDT) license, check directly in AcqKnowledge before troubleshooting these scripts.
+
+1) Open AcqKnowledge.
+2) Go to `Display > Preferences > Networking`.
+3) Look for the `Enable network data transfer` option.
+4) If that option is present and clickable, NDT is available.
+5) If the option is grayed out or missing, you likely do not have an active NDT license available to AcqKnowledge and this repository will not work for you.
+
+Disclaimer:
+- NDT is a separately licensed BIOPAC feature.
+- In many setups, the license is tied to the blue BIOPAC USB.
+- This repository does not provide the NDT license or the `biopacndt.py` file; you must obtain both through BIOPAC.
 
 ## Usage: Single-Channel ECG (`Biopac_ECG_LSL.py`)
 1) Run:
@@ -52,4 +69,4 @@ Notes for this script:
 - If the enabled channels change mid-run, unmapped indices will push `nan` values; keep your mapping aligned with the enabled-channel order.
 
 ## Attribution & Disclaimer
-These scripts were generated with ChatGPT 5.2 and adapted from `Biopac_MultiChannel_LSL.py` in Greg Bales' repository: https://github.com/greg1877/Trust_LSL. Please credit that source if you share or modify this code.
+These scripts were generated with Codex and adapted from `Biopac_MultiChannel_LSL.py` in Greg Bales' repository: https://github.com/greg1877/Trust_LSL. Please credit that source if you share or modify this code.
