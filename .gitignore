@@ -2,7 +2,6 @@
 __pycache__/
 biopacndt.py
 *.log
-*.bat
 *.pyc
 *.pyo
 *.pyd
