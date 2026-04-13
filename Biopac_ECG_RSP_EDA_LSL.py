@@ -18,6 +18,7 @@ Requires:
 """
 
 import biopacndt
+import os
 import sys
 import time
 import logging
@@ -31,6 +32,7 @@ SRATE = 500                # set to the rate you want your LSL stream to be trea
 REST_TIME = 1.0 / SRATE
 STREAM_NAME_BASE = "Biopac"
 STREAM_TYPE = "PsychoPhys"
+DEFAULT_MAPPING_ENV = "BIOPAC_DEFAULT_MAPPING"
 
 # Units (edit if you want)
 UNITS = {
@@ -302,7 +304,13 @@ def main():
     print("  eda=0")
     print("  rsp=0 ecg=1")
     print("  ecg=0 rsp=1 eda=2")
-    mapping_text = input("Enter mapping: ").strip()
+    default_mapping = os.environ.get(DEFAULT_MAPPING_ENV, "").strip()
+    if default_mapping:
+        mapping_text = input(f"Enter mapping [{default_mapping}]: ").strip()
+        if not mapping_text:
+            mapping_text = default_mapping
+    else:
+        mapping_text = input("Enter mapping: ").strip()
 
     try:
         mapping = parse_mapping_input(mapping_text)
