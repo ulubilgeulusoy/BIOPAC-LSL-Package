@@ -3,16 +3,7 @@ setlocal
 
 cd /d "%~dp0"
 
-set "PYTHON_EXE=C:\Users\ulul8626\AppData\Local\miniconda3\envs\lsl_env\python.exe"
 set "SCRIPT_PATH=%~dp0Biopac_ECG_RSP_EDA_LSL.py"
-set "BIOPAC_DEFAULT_MAPPING=rsp=0 ecg=1"
-
-if not exist "%PYTHON_EXE%" (
-    echo Could not find lsl_env Python at:
-    echo %PYTHON_EXE%
-    pause
-    exit /b 1
-)
 
 if not exist "%SCRIPT_PATH%" (
     echo Could not find script:
@@ -21,7 +12,28 @@ if not exist "%SCRIPT_PATH%" (
     exit /b 1
 )
 
-"%PYTHON_EXE%" "%SCRIPT_PATH%"
+set "PYTHON_CMD="
+
+where py >nul 2>nul
+if not errorlevel 1 (
+    set "PYTHON_CMD=py -3"
+)
+
+if not defined PYTHON_CMD (
+    where python >nul 2>nul
+    if not errorlevel 1 (
+        set "PYTHON_CMD=python"
+    )
+)
+
+if not defined PYTHON_CMD (
+    echo Could not find a Python launcher.
+    echo Install Python or update this batch file with your preferred interpreter.
+    pause
+    exit /b 1
+)
+
+%PYTHON_CMD% "%SCRIPT_PATH%"
 set "EXIT_CODE=%ERRORLEVEL%"
 
 if not "%EXIT_CODE%"=="0" (

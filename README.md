@@ -2,7 +2,7 @@
 
 Python helpers to pull physiological data from Biopac AcqKnowledge (NDT) and publish them as Lab Streaming Layer (LSL) streams. Two scripts are included:
 - `Biopac_ECG_LSL.py`: single-channel ECG streamer.
-- `Biopac_ECG_RSP_EDA_LSL.py`: flexible 1–3 channel streamer for ECG, respiration (RSP), and electrodermal activity (EDA); works for any subset of those signals.
+- `Biopac_ECG_RSP_EDA_LSL.py`: flexible 1-3 channel streamer for ECG, respiration (RSP), and electrodermal activity (EDA); works for any subset of those signals and now includes a GUI for setup and live monitoring.
 
 ## Requirements
 - Python 3.8+
@@ -58,17 +58,20 @@ Notes for this script:
    ```
    python Biopac_ECG_RSP_EDA_LSL.py
    ```
-   Or double-click `run_Biopac_ECG_RSP_EDA_LSL.bat` to launch it with a default mapping prompt.
-2) The script prints the enabled channels (in the order AcqKnowledge delivers them). Provide a mapping that states which enabled channel index corresponds to each signal:
-   - Examples: If you are only using one sensor (`ecg=0`,`rsp=0`,`eda=0`). If you are using multiple (`rsp=0 ecg=1`, `ecg=0 rsp=1 eda=2`); make sure that this mapping matches the order in the Acqknowledge software.
-   - If you launch with `run_Biopac_ECG_RSP_EDA_LSL.bat`, the mapping prompt defaults to `rsp=0 ecg=1`. Press `Enter` to accept that default, or type a different mapping.
-3) The script creates an LSL stream named like `Biopac ECG-RSP-EDA` with the specified channels at the configured sample rate (`SRATE` near the top of the file; defaults to 500 Hz).
-4) Press `Y` toggle acquisition when prompted, then press `Y` to start streaming. Use LabRecorder (or another LSL client) to record the stream.
-5) Press `Ctrl+C` to stop; the script stops the data server and toggles acquisition off if it was turned on.
+   Or double-click `run_Biopac_ECG_RSP_EDA_LSL.bat`.
+2) In the GUI:
+   - Click `Connect` to connect to AcqKnowledge and populate the detected enabled channels.
+   - Map the enabled channel indices to ECG / RSP / EDA using the dropdowns.
+   - Optionally enter a session ID, which is appended to the LSL stream name.
+   - Use `Acq On` / `Acq Off` to control acquisition without terminal prompts.
+3) Click `Start Streaming` to create the LSL outlet and begin forwarding BIOPAC data.
+4) Use the live status area, event log, and signal preview to confirm the stream is healthy during collection.
+5) Click `Stop Streaming` when finished. `Reset` disconnects and clears the current session state.
 
 Notes for this script:
 - Logs are written with names like `bp_ecg_rsp_eda_*.log`.
 - If the enabled channels change mid-run, unmapped indices will push `nan` values; keep your mapping aligned with the enabled-channel order.
+- The GUI adds bounded buffering, stale-data monitoring, reconnect attempts, and a rolling event log to make long recordings easier to supervise.
 
 ## Attribution & Disclaimer
 These scripts were generated with Codex and adapted from `Biopac_MultiChannel_LSL.py` in Greg Bales' repository: https://github.com/greg1877/Trust_LSL. Please credit that source if you share or modify this code.
