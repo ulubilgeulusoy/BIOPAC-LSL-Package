@@ -1,4 +1,4 @@
-# BIOPAC LSL GUI Streamer
+# BIOPAC LSL GUI
 
 This repository contains a single GUI application for streaming physiological data from BIOPAC AcqKnowledge over Lab Streaming Layer (LSL):
 
