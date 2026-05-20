@@ -114,6 +114,6 @@ These logs include state changes, mapping confirmation, streaming events, warnin
 - This project leaves `biopacndt.py` unchanged and builds robustness in the GUI application around it.
 
 ## Attribution
-This application was generated and iteratively adapted with Codex, based in part on ideas from `Biopac_MultiChannel_LSL.py` in Greg Bales' repository:
+This application was generated based in part on ideas from `Biopac_MultiChannel_LSL.py` in Greg Bales' repository:
 
 https://github.com/greg1877/Trust_LSL
