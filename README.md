@@ -110,3 +110,9 @@ These logs include state changes, mapping confirmation, streaming events, warnin
 
 This project was developed independently, with high-level workflow inspiration from Greg Bales' `Trust_LSL` repository for BIOPAC-to-LSL streaming concepts:
 https://github.com/greg1877/Trust_LSL
+
+## License
+
+This repository's original source code is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+This license applies only to the files included in this repository. It does not apply to BIOPAC AcqKnowledge, BIOPAC Network Data Transfer (NDT), `biopacndt.py`, or any other third-party software required to run the application. Users are responsible for obtaining and complying with the applicable BIOPAC/NDT licenses.
