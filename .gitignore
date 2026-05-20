@@ -6,4 +6,5 @@ biopacndt.py
 *.pyo
 *.pyd
 *.swp
-*.swo       
+*.swo
+*.bat

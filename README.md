@@ -8,7 +8,6 @@ The app is designed for an operator workflow where BIOPAC / AcqKnowledge is conf
 
 ## Files
 - `Biopac_ECG_RSP_EDA_LSL.py`: main GUI streamer
-- `run_Biopac_ECG_RSP_EDA_LSL.bat`: Windows launcher
 - `biopacndt.py`: BIOPAC NDT Python module used by the app (not included in the repository, you need to obtain this file from BIOPAC)
 
 ## Requirements
@@ -50,16 +49,10 @@ This GUI assumes AcqKnowledge is already prepared before you use it:
 8. Start LSL streaming.
 
 ## Running The App
-Start the GUI with either:
+Start the GUI with:
 
 ```bash
 python Biopac_ECG_RSP_EDA_LSL.py
-```
-
-or by double-clicking:
-
-```text
-run_Biopac_ECG_RSP_EDA_LSL.bat
 ```
 
 ## GUI Workflow
