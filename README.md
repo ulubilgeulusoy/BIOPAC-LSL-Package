@@ -10,6 +10,8 @@ The app is designed for an operator workflow where BIOPAC / AcqKnowledge is conf
 - `Biopac_ECG_RSP_EDA_LSL.py`: main GUI streamer
 - `biopacndt.py`: BIOPAC NDT Python module used by the app (not included in the repository)
 
+biopacndt.py is provided by BIOPAC / AcqKnowledge NDT and is not distributed with this repository. Users must obtain it under BIOPAC’s terms.
+
 ## Requirements
 - Python 3.8+
 - BIOPAC AcqKnowledge with Network Data Transfer (NDT) enabled
