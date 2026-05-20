@@ -113,7 +113,7 @@ These logs include state changes, mapping confirmation, streaming events, warnin
 - If the enabled channels inside AcqKnowledge change, you should refresh channels and re-confirm mapping before starting a new run.
 - This project leaves `biopacndt.py` unchanged and builds robustness in the GUI application around it.
 
-## Attribution
-This application was generated based in part on ideas from `Biopac_MultiChannel_LSL.py` in Greg Bales' repository:
+## Acknowledgment
 
+This project was developed independently, with high-level workflow inspiration from Greg Bales' `Trust_LSL` repository for BIOPAC-to-LSL streaming concepts:
 https://github.com/greg1877/Trust_LSL
